@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<style>
+body {
+  margin: 0;
+  background: #0e0e0e;
+  color: #f5f5f5;
+  font-family: Georgia, serif;
+}
+
+#lock {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input, button {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.swiper {
+  height: 100vh;
+  display: none;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.8s ease;
+}
+
+.string-wrap {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+}
+
+.string {
+  width: 90%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.frame {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #eee;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.frame img {
+  width: 180px;
+  border-radius: 4px;
+}
+
+.swiper-slide {
+  opacity: 0.4;
+  transform: scale(0.9) translateY(40px);
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div id="lock">
+  <h2>This space is only for you</h2>
+  <input type="password" id="pass" placeholder="Enter the key">
+  <button onclick="unlock()">Enter</button>
+</div>
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide">
+      <div class="string-wrap">
+        <img src="string.png" class="string">
+        <div class="frame">
+          <img src="jan.jpg">
+        </div>
+      </div>
+      <p>January — where it quietly began.</p>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="string-wrap">
+        <img src="string.png" class="string">
+        <div class="frame">
+          <img src="feb.jpg">
+        </div>
+      </div>
+      <p>February — comfort without effort.</p>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+function unlock() {
+  if (document.getElementById("pass").value === "secret") {
+    document.getElementById("lock").style.display = "none";
+    document.querySelector(".swiper").style.display = "block";
+
+    new Swiper('.swiper', {
+      speed: 900,
+      grabCursor: true
+    });
+  } else {
+    alert("This isn’t for you.");
+  }
+}
+</script>
+
+</body>
+</html>
